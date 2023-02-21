@@ -9,9 +9,11 @@ import java.util.List;
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
     /**
-     * 4. Return a page of customers from the database. This should take in limit and offset as parameters and make use of the SQL limit and offset keywords to get a subset of the customer data. The customer model from above should be reused.
+     * 4. Return a page of customers from the database. This should take in limit and offset as parameters and make use of the SQL limit and offset keywords to get a subset of the customer data.
+     *    The customer model from above should be reused.
      *  5. Add a new customer to the database. You also need to add only the fields listed above (our customer object)
-     * 6. Update an existing customer.
+     * 6. Update an existing customer. [DONE]
+     * 7. Return the country with the most customers.
      */
 
     private final JdbcTemplate jdbcTemplate;
@@ -44,13 +46,51 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return null;
     }
 
+    //number 5
     @Override
     public int addCustomer(Customer object) {
-        return 0;
+        //Make an sql string to insert into the database for customer
+        String sql = "INSERT INTO customer (first_name, last_name, company, address, city, state, country,  postal_code, phone,fax, email) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return jdbcTemplate.update(sql, object.getFirst_name(),
+                object.getLast_name(),
+                object.getCompany(),
+                object.getAddress(),
+                object.getCity(),
+                object.getState(),
+                object.getCountry(),
+                object.getPostal_code(),
+                object.getPhone(),
+                object.getFax(),
+                object.getEmail());
     }
+
+    //number 6
+
 
     @Override
     public int updateCustomer(Customer object) {
-        return 0;
+        String sql = "UPDATE customer SET first_name = ?, last_name = ?, company = ?, address = ?, city = ?, state = ?, country = ?,  postal_code = ?, phone = ?, fax = ?, email = ? WHERE id = ?";
+
+        return jdbcTemplate.update(sql, object.getFirst_name(),
+                object.getLast_name(),
+                object.getCompany(),
+                object.getAddress(),
+                object.getCity(),
+                object.getState(),
+                object.getCountry(),
+                object.getPostal_code(),
+                object.getPhone(),
+                object.getFax(),
+                object.getEmail(),
+                object.getId());
     }
+
+    //number 7
+    @Override
+    public String findCountryWithMostCustomers() {
+        String sql = "SELECT country, COUNT(*) AS count FROM customer GROUP BY country ORDER BY count DESC LIMIT 1";
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
+
 }

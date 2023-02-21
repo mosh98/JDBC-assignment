@@ -39,4 +39,52 @@ public class Customer {
         this.fax = fax;
         this.email = email;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getPostal_code() {
+        return postal_code;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
