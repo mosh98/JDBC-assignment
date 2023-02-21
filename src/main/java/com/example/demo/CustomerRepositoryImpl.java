@@ -69,7 +69,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public int updateCustomer(Customer object) {
-        String sql = "UPDATE customer SET first_name = ?, last_name = ?, company = ?, address = ?, city = ?, state = ?, country = ?,  postal_code = ?, phone = ?, fax = ?, email = ? WHERE id = ?";
+        String sql = "UPDATE customer SET first_name = ?, last_name = ?, company = ?, address = ?, city = ?, state = ?, country = ?,  postal_code = ?, phone = ?, fax = ?, email = ? WHERE customer_id = ?";
 
         return jdbcTemplate.update(sql, object.getFirst_name(),
                 object.getLast_name(),

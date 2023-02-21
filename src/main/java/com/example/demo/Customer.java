@@ -1,7 +1,7 @@
 package com.example.demo;
 
 public class Customer {
-    private int id;
+    private int customer_id;
     private String first_name;
 
     private String last_name;
@@ -26,7 +26,7 @@ public class Customer {
 
 
     public Customer(int id, String first_name, String last_name, String company, String address, String city, String state, String country, String postal_code, String phone, String fax, String email) {
-        this.id = id;
+        this.customer_id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.company = company;
@@ -41,7 +41,7 @@ public class Customer {
     }
 
     public int getId() {
-        return id;
+        return customer_id;
     }
 
     public String getFirst_name() {
