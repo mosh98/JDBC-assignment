@@ -17,4 +17,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     //return country with most customers
     String findCountryWithMostCustomers();
 
+    //return customer with highest total
+    String findCustomerWithHighestTotal();
+
 }

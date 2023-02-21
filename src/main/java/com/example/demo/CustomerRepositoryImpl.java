@@ -93,4 +93,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
 
+    //number 8
+    @Override
+    public String findCustomerWithHighestTotal() {
+        String sql = "SELECT c.first_name, MAX(i.total) AS total_spent\n" +
+                "FROM customer c\n" +
+                "         JOIN invoice i ON c.customer_id = i.customer_id\n" +
+                "GROUP BY c.customer_id\n" +
+                "ORDER BY total_spent DESC\n" +
+                "LIMIT 1";
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
+
 }

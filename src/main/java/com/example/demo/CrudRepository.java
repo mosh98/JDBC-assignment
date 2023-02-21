@@ -16,4 +16,7 @@ public interface CrudRepository <T, U> {
 
     //return country with most customers
     String findCountryWithMostCustomers();
+
+    //return customer with highest total
+    String findCustomerWithHighestTotal();
 }
