@@ -2,37 +2,16 @@ package com.example.demo;
 
 import java.util.List;
 
-public class CustomerRepository implements CrudRepository<Customer, Integer> {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
+    /**
+     * Customer interface
+     * @T - Customer
+     * @U - Integer
+     */
+    List<Customer> findAll();
+    Customer findById(Integer id); //read specific customer
+    Customer findByName(Customer name); //read specific customer
+    int addCustomer(Customer object);
+    int updateCustomer(Customer object);
 
-    public CustomerRepository() {
-        super();
-    }
-
-    @Override
-    public List<Customer> findAll() {
-        return null;
-    }
-
-    @Override
-    public Customer findById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Customer findByName(Customer name) {
-        return null;
-    }
-
-    @Override
-    public int addCustomer(Customer object) {
-        return 0;
-    }
-
-    @Override
-    public int updateCustomer(Customer object) {
-
-
-
-        return 0;
-    }
 }
