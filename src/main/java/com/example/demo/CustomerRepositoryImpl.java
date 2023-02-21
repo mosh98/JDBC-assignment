@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CustomerRepositoryImpl extends CustomerRepository {
+public class CustomerRepositoryImpl implements CustomerRepository {
     /**
      * 4. Return a page of customers from the database. This should take in limit and offset as parameters and make use of the SQL limit and offset keywords to get a subset of the customer data. The customer model from above should be reused.
      *  5. Add a new customer to the database. You also need to add only the fields listed above (our customer object)
@@ -31,27 +31,26 @@ public class CustomerRepositoryImpl extends CustomerRepository {
 
     @Override
     public List<Customer> findAll() {
-        return super.findAll();
+        return null;
     }
 
     @Override
     public Customer findById(Integer id) {
-        return super.findById(id);
+        return null;
     }
 
     @Override
     public Customer findByName(Customer name) {
-        return super.findByName(name);
+        return null;
     }
 
     @Override
     public int addCustomer(Customer object) {
-        return super.addCustomer(object);
+        return 0;
     }
 
     @Override
     public int updateCustomer(Customer object) {
-        //some business logic
-        return super.updateCustomer(object);
+        return 0;
     }
 }
