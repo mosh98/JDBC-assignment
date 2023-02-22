@@ -97,6 +97,44 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return customer;
     }
 
+    //number 4
+    @Override
+    public List<Customer> getCustomers(int limit, int offset) {
+        List<Customer> customers = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM customer ORDER BY customer_id LIMIT ? OFFSET ?")) {
+
+            statement.setInt(1, limit);
+            statement.setInt(2, offset);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Customer customer = new Customer(
+                        resultSet.getInt("customer_id"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("company"),
+                        resultSet.getString("address"),
+                        resultSet.getString("city"),
+                        resultSet.getString("state"),
+                        resultSet.getString("country"),
+                        resultSet.getString("postal_code"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("fax"),
+                        resultSet.getString("email")
+                );
+                customers.add(customer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customers;
+    }
+
+
     @Override
     public Customer findByName(String name) {
         String sql = "SELECT * FROM customer WHERE first_name LIKE ?";
@@ -150,26 +188,55 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public int updateCustomer(Customer object) {
         String sql = "UPDATE customer SET first_name = ?, last_name = ?, company = ?, address = ?, city = ?, state = ?, country = ?,  postal_code = ?, phone = ?, fax = ?, email = ? WHERE customer_id = ?";
 
-        return jdbcTemplate.update(sql, object.getFirst_name(),
-                object.getLast_name(),
-                object.getCompany(),
-                object.getAddress(),
-                object.getCity(),
-                object.getState(),
-                object.getCountry(),
-                object.getPostal_code(),
-                object.getPhone(),
-                object.getFax(),
-                object.getEmail(),
-                object.getId());
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, object.getFirst_name());
+            statement.setString(2, object.getLast_name());
+            statement.setString(3, object.getCompany());
+            statement.setString(4, object.getAddress());
+            statement.setString(5, object.getCity());
+            statement.setString(6, object.getState());
+            statement.setString(7, object.getCountry());
+            statement.setString(8, object.getPostal_code());
+            statement.setString(9, object.getPhone());
+            statement.setString(10, object.getFax());
+            statement.setString(11, object.getEmail());
+            statement.setInt(12, object.getId());
+
+            return statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     //number 7
     @Override
     public String findCountryWithMostCustomers() {
+
         String sql = "SELECT country, COUNT(*) AS count FROM customer GROUP BY country ORDER BY count DESC LIMIT 1";
-        return jdbcTemplate.queryForObject(sql, String.class);
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+
+             PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                return "Country: " +resultSet.getString("country") + " Count: "+ resultSet.getString("count");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
+
+
 
 
     //number 8
@@ -181,7 +248,23 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 "GROUP BY c.customer_id\n" +
                 "ORDER BY total_spent DESC\n" +
                 "LIMIT 1";
-        return jdbcTemplate.queryForObject(sql, String.class);
+
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+
+                PreparedStatement statement = connection.prepareStatement(sql);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    return "Customer: " +resultSet.getString("first_name") + " Total Spent: "+ resultSet.getString("total_spent");
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+        }
+
+        return null;
     }
 
 

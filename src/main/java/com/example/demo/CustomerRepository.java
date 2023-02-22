@@ -11,6 +11,9 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     List<Customer> findAll();
     Customer findById(Integer id); //read specific customer
     Customer findByName(String name); //read specific customer
+
+    List<Customer> getCustomers(int limit, int offset);
+
     int addCustomer(Customer object);
     int updateCustomer(Customer object);
 
