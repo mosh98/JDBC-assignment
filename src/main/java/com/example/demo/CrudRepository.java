@@ -13,4 +13,10 @@ public interface CrudRepository <T, U> {
     T findByName(T name); //read specific customer
     int addCustomer(T object);
     int updateCustomer(T object);
+
+    //return country with most customers
+    String findCountryWithMostCustomers();
+
+    //return customer with highest total
+    String findCustomerWithHighestTotal();
 }
