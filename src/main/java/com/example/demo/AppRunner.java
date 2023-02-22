@@ -5,6 +5,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AppRunner implements ApplicationRunner {
 
@@ -17,8 +19,12 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        customerRepository.findAll().forEach(System.out::println);
-        System.out.println(customerRepository.findById(7));
-        System.out.println(customerRepository.findByName("Enrique"));
+//        customerRepository.findAll().forEach(System.out::println);
+//        System.out.println(customerRepository.findById(7));
+//        System.out.println(customerRepository.findByName("Enrique"));
+
+        List<Customer> cus =  customerRepository.getCustomers(10, 0);
+        cus.forEach(System.out::println);
+
     }
 }

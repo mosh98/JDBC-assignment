@@ -97,6 +97,44 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return customer;
     }
 
+    //number 4
+    @Override
+    public List<Customer> getCustomers(int limit, int offset) {
+        List<Customer> customers = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM customer ORDER BY customer_id LIMIT ? OFFSET ?")) {
+
+            statement.setInt(1, limit);
+            statement.setInt(2, offset);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Customer customer = new Customer(
+                        resultSet.getInt("customer_id"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("company"),
+                        resultSet.getString("address"),
+                        resultSet.getString("city"),
+                        resultSet.getString("state"),
+                        resultSet.getString("country"),
+                        resultSet.getString("postal_code"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("fax"),
+                        resultSet.getString("email")
+                );
+                customers.add(customer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customers;
+    }
+
+
     @Override
     public Customer findByName(String name) {
         String sql = "SELECT * FROM customer WHERE first_name LIKE ?";
