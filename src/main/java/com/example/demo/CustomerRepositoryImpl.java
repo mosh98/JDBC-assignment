@@ -8,12 +8,14 @@ import java.util.List;
 
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
+
     /**
      * 4. Return a page of customers from the database. This should take in limit and offset as parameters and make use of the SQL limit and offset keywords to get a subset of the customer data.
      *    The customer model from above should be reused.
      *  5. Add a new customer to the database. You also need to add only the fields listed above (our customer object)
      * 6. Update an existing customer. [DONE]
      * 7. Return the country with the most customers.
+     * 8. Return the customer with the highest total.
      */
 
     private final JdbcTemplate jdbcTemplate;
@@ -65,8 +67,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     //number 6
-
-
     @Override
     public int updateCustomer(Customer object) {
         String sql = "UPDATE customer SET first_name = ?, last_name = ?, company = ?, address = ?, city = ?, state = ?, country = ?,  postal_code = ?, phone = ?, fax = ?, email = ? WHERE customer_id = ?";
