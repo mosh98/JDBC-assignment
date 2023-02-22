@@ -19,5 +19,6 @@ public class AppRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         customerRepository.findAll().forEach(System.out::println);
         System.out.println(customerRepository.findById(7));
+        System.out.println(customerRepository.findByName("Enrique"));
     }
 }
