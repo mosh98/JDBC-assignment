@@ -1,22 +1,18 @@
-package com.example.demo;
+package com.example.demo.repositories;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface CrudRepository <T, U> {
     /**
      * Customer interface
      * @T - Customer
-     * @U - Integer
+     * @U - Integer, Primary Key
      */
     List<T> findAll();
     T findById(U id); //read specific customer
-//    T findByName(T name); //read specific customer
-    int addCustomer(T object);
+    int addCustomer(T object) throws SQLException;
     int updateCustomer(T object);
 
-    //return country with most customers
     String findCountryWithMostCustomers();
-
-    //return customer with highest total
-    String findCustomerWithHighestTotal();
 }

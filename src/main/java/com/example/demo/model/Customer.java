@@ -1,91 +1,88 @@
-package com.example.demo;
+package com.example.demo.model;
 
 public class Customer {
     private int customer_id;
     private String first_name;
-
     private String last_name;
-
     private String company;
-
-    private String address;
-
-    private String city;
-
-    private String state;
-
     private String country;
-
     private String postal_code;
-
     private String phone;
-
-    private String fax;
-
     private String email;
 
-
-    public Customer(int id, String first_name, String last_name, String company, String address, String city, String state, String country, String postal_code, String phone, String fax, String email) {
-        this.customer_id = id;
+    public Customer(int customer_id, String first_name, String last_name, String company, String country, String postal_code, String phone, String email) {
+        this.customer_id = customer_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.company = company;
-        this.address = address;
-        this.city = city;
-        this.state = state;
         this.country = country;
         this.postal_code = postal_code;
         this.phone = phone;
-        this.fax = fax;
         this.email = email;
     }
 
-    public int getId() {
+    public int getCustomer_id() {
         return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getFirst_name() {
         return first_name;
     }
 
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
     public String getLast_name() {
         return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getCompany() {
         return company;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getCountry() {
         return country;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getPostal_code() {
         return postal_code;
+    }
+
+    public void setPostal_code(String postal_code) {
+        this.postal_code = postal_code;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public String getFax() {
-        return fax;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -95,13 +92,9 @@ public class Customer {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", company='" + company + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", postal_code='" + postal_code + '\'' +
                 ", phone='" + phone + '\'' +
-                ", fax='" + fax + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
