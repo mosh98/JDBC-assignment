@@ -207,6 +207,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return newCustomer;
     }
 
+    //number 6
     @Override
     public int updateCustomer(Customer object) {
         /**
@@ -240,7 +241,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         }
     }
 
-    //number 6
+
 
 
     //number 7
@@ -307,6 +308,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return highestSpender;
     }
 
+    //number 9
     @Override
     public CustomersFavoriteGenre mostPopGenre(int id) {
         /**
