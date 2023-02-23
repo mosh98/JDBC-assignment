@@ -87,15 +87,14 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customer_id=" + customer_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", company='" + company + '\'' +
-                ", country='" + country + '\'' +
-                ", postal_code='" + postal_code + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return
+                "customer_id = " + customer_id +
+                ", first_name = '" + first_name + '\'' +
+                ", last_name = '" + last_name + '\'' +
+                ", company = '" + company + '\'' +
+                ", country = '" + country + '\'' +
+                ", postal_code = '" + postal_code + '\'' +
+                ", phone = '" + phone + '\'' +
+                ", email = '" + email + '\'';
     }
 }

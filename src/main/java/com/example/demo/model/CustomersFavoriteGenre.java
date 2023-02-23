@@ -43,6 +43,6 @@ public class CustomersFavoriteGenre {
                 '\'' + name + '\'' +
                 " with id " + '\'' +
                 id + '\'' +
-                ", likes " + genre;
+                " likes " + genre;
     }
 }
