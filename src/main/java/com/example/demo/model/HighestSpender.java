@@ -5,6 +5,7 @@ public class HighestSpender {
     int id;
     String name;
 
+
     public HighestSpender(int id, String name) {
         this.id = id;
         this.name = name;
