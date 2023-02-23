@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
 public class CustomerCountry {
+    /**
+     * This class is used to store & display the customer's country in the database.
+     */
 
     String countryName;
 
@@ -12,9 +15,6 @@ public class CustomerCountry {
         return countryName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
 
     @Override
     public String toString() {

@@ -1,6 +1,10 @@
 package com.example.demo.model;
 
 public class CustomersFavoriteGenre {
+    /**
+     * This class is used to store & display the customer's favorite genre in the database.
+     *
+     */
     int id;
 
     String name;

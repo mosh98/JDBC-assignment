@@ -1,14 +1,28 @@
 package com.example.demo.model;
 
 public class HighestSpender {
+    /**
+     * This class is used to store & display the highest spender in the database.
+     *
+     */
 
     int id;
     String name;
 
+    /**
+     * Constructor for HighestSpender
+     * @param id
+     * @param name
+     */
     public HighestSpender(int id, String name) {
         this.id = id;
         this.name = name;
     }
+
+    /**
+     * Getters & Setters
+     * @return different fields
+     */
 
     public int getId() {
         return id;
